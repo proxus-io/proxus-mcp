@@ -1,4 +1,4 @@
-# Proxus Industrial MCP Server
+# <img src="docs/brand/mark.svg" width="40" height="40" align="top" alt=""> Proxus Industrial MCP Server
 
 <!-- mcp-name: io.github.proxusiiotplatform/proxus-mcp -->
 
