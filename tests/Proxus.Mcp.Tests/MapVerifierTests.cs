@@ -145,7 +145,7 @@ public sealed class MapVerifierTests
     {
         var url = VerifyTools.SubmitUrl("acme/meter", """{"report_version":1}""")!;
 
-        Assert.StartsWith("https://github.com/proxusiiotplatform/modbus-register-maps/issues/new?template=verification.yml", url);
+        Assert.StartsWith("https://github.com/proxus-io/modbus-register-maps/issues/new?template=verification.yml", url);
         Assert.Contains("report=%7B%22report_version%22%3A1%7D", url);
         Assert.Null(VerifyTools.SubmitUrl("acme/meter", new string('x', 8000)));
     }

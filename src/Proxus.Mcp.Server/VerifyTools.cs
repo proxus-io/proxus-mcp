@@ -14,7 +14,7 @@ namespace Proxus.Mcp;
 [McpServerToolType]
 public sealed partial class VerifyTools(DeviceSessions sessions)
 {
-    private const string IssueUrl = "https://github.com/proxusiiotplatform/modbus-register-maps/issues/new";
+    private const string IssueUrl = "https://github.com/proxus-io/modbus-register-maps/issues/new";
     private const int MaxBlockRegisters = 100;
     private const int MaxUrlLength = 7500;
     private const int MaxEnergyRereads = 10;

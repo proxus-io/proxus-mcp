@@ -6,7 +6,7 @@ namespace Proxus.Mcp;
 
 /// <summary>
 ///     A device's register map in the JSON form of the Modbus Register Maps collection
-///     (https://github.com/proxusiiotplatform/modbus-register-maps, built with tools/maps.py build).
+///     (https://github.com/proxus-io/modbus-register-maps, built with tools/maps.py build).
 ///     Addresses are zero-based protocol addresses.
 /// </summary>
 public sealed class DeviceMap

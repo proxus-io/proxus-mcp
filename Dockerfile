@@ -3,9 +3,9 @@
 FROM mcr.microsoft.com/dotnet/runtime-deps:10.0-noble-chiseled
 ARG TARGETARCH
 # The MCP Registry checks that the image belongs to the server named in server.json.
-LABEL io.modelcontextprotocol.server.name="io.github.proxusiiotplatform/proxus-mcp"
+LABEL io.modelcontextprotocol.server.name="io.github.proxus-io/proxus-mcp"
 COPY dist/${TARGETARCH}/proxus-mcp /usr/local/bin/proxus-mcp
 WORKDIR /config
-# MCP talks over stdin/stdout: docker run -i --rm -v "$PWD:/config" ghcr.io/proxusiiotplatform/proxus-mcp
+# MCP talks over stdin/stdout: docker run -i --rm -v "$PWD:/config" ghcr.io/proxus-io/proxus-mcp
 ENTRYPOINT ["/usr/local/bin/proxus-mcp"]
 CMD ["--config", "/config/proxus-mcp.json"]

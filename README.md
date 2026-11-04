@@ -1,6 +1,6 @@
 # <img src="docs/brand/mark.svg" width="40" height="40" align="top" alt=""> Proxus Industrial MCP Server
 
-<!-- mcp-name: io.github.proxusiiotplatform/proxus-mcp -->
+<!-- mcp-name: io.github.proxus-io/proxus-mcp -->
 
 Gives AI assistants such as Claude Desktop, Cursor and VS Code read-only access to industrial devices. Supports Modbus TCP and OPC UA (Basic256Sha256, Aes128_Sha256_RsaOaep or Aes256_Sha256_RsaPss with Sign or SignAndEncrypt, or unsecured; anonymous or user-name login).
 
@@ -32,7 +32,7 @@ Nothing can write to a device.
 With a register map the assistant reads `voltage_l1_n` instead of guessing that hr:0-1 is a word-swapped float.
 A map lists every register of a device model: address, data type, byte order, scale (fixed, or a SunSpec scale-factor
 register), unit and the meaning of enumerated values, with the vendor document it comes from. The binaries include the
-open [Modbus Register Maps](https://github.com/proxusiiotplatform/modbus-register-maps) collection (energy meters, power
+open [Modbus Register Maps](https://github.com/proxus-io/modbus-register-maps) collection (energy meters, power
 analysers, drives, inverters); each release also attaches it as `register-maps.json.gz`.
 
 Give a Modbus device its map in the configuration, by id or as the path of a map's JSON file:
@@ -88,17 +88,17 @@ choose "More info, Run anyway" the first time.
 ### Docker
 
 ```bash
-docker run -i --rm -v "$PWD:/config" ghcr.io/proxusiiotplatform/proxus-mcp:<version>
+docker run -i --rm -v "$PWD:/config" ghcr.io/proxus-io/proxus-mcp:<version>
 ```
 
 The image reads `/config/proxus-mcp.json` and speaks MCP over stdin/stdout, so an MCP client starts it with
-`docker` as the command and `run -i --rm -v <folder>:/config ghcr.io/proxusiiotplatform/proxus-mcp:<version>` as the
+`docker` as the command and `run -i --rm -v <folder>:/config ghcr.io/proxus-io/proxus-mcp:<version>` as the
 arguments. Devices on the host are reachable as `host.docker.internal`; on Linux add `--network host` to reach the
 plant network directly. Images are published for linux/amd64 and linux/arm64.
 
 ## Build
 
-Needs the .NET 10 SDK. The protocol drivers come from the [Proxus.Drivers](https://github.com/proxusiiotplatform/proxus-drivers) NuGet packages (Apache-2.0).
+Needs the .NET 10 SDK. The protocol drivers come from the [Proxus.Drivers](https://github.com/proxus-io/proxus-drivers) NuGet packages (Apache-2.0).
 
 ```bash
 dotnet publish src/Proxus.Mcp.Server -c Release -r osx-arm64 -o artifacts/osx-arm64

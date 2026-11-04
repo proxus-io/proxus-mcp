@@ -18,15 +18,15 @@ concurrency:
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: "1"
   DOTNET_NOLOGO: "1"
-  # Register maps built into the binaries: a commit of https://github.com/proxusiiotplatform/modbus-register-maps.
+  # Register maps built into the binaries: a commit of https://github.com/proxus-io/modbus-register-maps.
   # Pinned so a release is reproducible; move it forward to ship newer maps.
-  MAPS_REPOSITORY: proxusiiotplatform/modbus-register-maps
-  MAPS_REF: 73086fe67057c7477df50147e831568a83e8180d
+  MAPS_REPOSITORY: proxus-io/modbus-register-maps
+  MAPS_REF: e1ac9e6cfeb500e8235903fa6f54b2b2100bfe06
 
 jobs:
   create:
-    # Only a tag the repository owner pushed releases.
-    if: github.actor == github.repository_owner
+    # Only a tag the maintainer account pushed releases; the owner is now the proxus-io organization.
+    if: github.actor == 'proxusiiotplatform'
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -54,7 +54,7 @@ jobs:
           # server.json is what the MCP Registry lists; it must name this release and its image.
           version="${TAG#v}"
           if [[ "$(jq -r .version server.json)" != "$version" ||
-                "$(jq -r '.packages[0].identifier' server.json)" != "ghcr.io/proxusiiotplatform/proxus-mcp:$version" ]]; then
+                "$(jq -r '.packages[0].identifier' server.json)" != "ghcr.io/proxus-io/proxus-mcp:$version" ]]; then
             echo "::error::server.json does not name version $version; update it before tagging."
             exit 1
           fi
